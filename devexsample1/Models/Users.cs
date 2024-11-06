@@ -10,5 +10,6 @@ namespace devexsample1.Models {
         public string Name { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
+        public double Amount { get; set; }
     }
 }

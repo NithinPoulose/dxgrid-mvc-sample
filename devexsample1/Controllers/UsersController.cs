@@ -15,7 +15,7 @@ namespace devexsample1.Controllers {
         public HttpResponseMessage Get(DataSourceLoadOptions loadOptions)
         {
             // Load data and return it with paging, filtering, etc. using DevExtreme's DataSourceLoader
-            var result = DataSourceLoader.Load(SampleData.Users, loadOptions);
+            var result = DataSourceLoader.Load(SampleData.UsersData, loadOptions);
             return Request.CreateResponse(result);
         }
     }

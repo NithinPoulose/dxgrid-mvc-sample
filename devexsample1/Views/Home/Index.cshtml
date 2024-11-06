@@ -12,6 +12,7 @@
     .DataSource(d => d.WebApi().Controller("Users").Key("Id"))
     .Export(e => e.Enabled(false))
     .OnExporting("exporting")
+    //.Height("90%")
     .Columns(columns => {
         columns.Add()
             .DataField("Id")
