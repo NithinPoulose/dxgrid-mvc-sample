@@ -1,0 +1,84 @@
+@using devexsample1.Models
+@model IEnumerable<Users>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Sample Grid - test_nit</h2>
+
+@(Html.DevExtreme().DataGrid<Users>()
+    .ShowBorders(true)
+    .DataSource(d => d.WebApi().Controller("Users").Key("Id"))
+    .Export(e => e.Enabled(false))
+    .OnExporting("exporting")
+    .Columns(columns => {
+        columns.Add()
+            .DataField("Id")
+            .Caption("ID")
+            .DataType(GridColumnDataType.Number)
+            .Alignment(HorizontalAlignment.Center);
+
+        columns.Add()
+            .DataField("Name")
+            .Caption("Name")
+            .DataType(GridColumnDataType.String)
+            .Alignment(HorizontalAlignment.Left);
+
+        columns.Add()
+            .DataField("UserName")
+            .Caption("User Name")
+            .DataType(GridColumnDataType.String)
+            .Alignment(HorizontalAlignment.Left);
+
+        columns.Add()
+            .DataField("Email")
+            .Caption("Email")
+            .DataType(GridColumnDataType.String)
+            .Alignment(HorizontalAlignment.Left);
+
+        columns.Add()
+            .DataField("Amount")
+            .Caption("Sale Amount")
+            .DataType(GridColumnDataType.Number)
+            .Format(Format.Currency)
+            .Alignment(HorizontalAlignment.Right);
+
+    })
+
+
+
+    .Paging(p => p.PageSize(10))
+    .FilterRow(f => f.Visible(true))
+    .HeaderFilter(f => f.Visible(true))
+    .GroupPanel(p => p.Visible(true))
+    .Grouping(g => g.AutoExpandAll(false))
+    .RemoteOperations(true)
+    .AllowColumnReordering(true)
+    //.Summary(s => s
+    //    .TotalItems(totalItems => {
+    //        totalItems.AddFor(m => m.UserName).SummaryType(SummaryType.Count);
+    //    })
+    //    .GroupItems(groupItems => {
+    //        groupItems.Add().SummaryType(SummaryType.Count);
+    //    })
+    //)
+)
+
+
+<script>
+    function exporting(e) {
+        ////var workbook = new ExcelJS.Workbook();
+        ////var worksheet = workbook.addWorksheet('Users');
+
+        ////DevExpress.excelExporter.exportDataGrid({
+        ////    component: e.component,
+        ////    worksheet: worksheet,
+        ////    autoFilterEnabled: true
+        ////}).then(function () {
+        ////    workbook.xlsx.writeBuffer().then(function (buffer) {
+        ////        saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Users.xlsx');
+        ////    });
+        ////});
+    }
+</script>
